@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="text-center mt-4">
+    <h1>Welcome!</h1>
+    <p>Here is a resource to help find an "affordable" Toyota vehicle that is reliable, easy to maintain,
+        and will hold its value well.</p>
+</div>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Featured Cars</h2>
+
+    <div class="row">
+        {% for car in featured_cars.values() %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <h5 class="card-title m-2 text-center">{{ car.make }} {{ car.model }}</h5>
+                    <img src="{{ car.image }}" class="card-img-top car-image" alt="{{ car.make }} {{ car.model }}">
+                    <div class="card-footer text-center">
+                        <a href="/view/{{ car.id }}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

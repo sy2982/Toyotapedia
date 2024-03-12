@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  margin-right: 10px;
+}
+
+.car-image {
+  height: 300px;
+  object-fit: contain;
+}
+
+.car-detail-image {
+  height: 400px;
+  object-fit: contain;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.allButFooter {
+  min-height: calc(100vh - 40px);
+}
+
+footer {
+  color: white;
+  background-color: rgb(34, 37, 41);
+  padding-top: 5px;
+  padding-bottom: 1px;
+  align-items: center;
+}
+
+.goldAccents {
+  background-color: gold;
+  height: 5px;
+}
+
+.footsite {
+  color: white;
+  text-decoration: none;
+}
+
+.carName {
+  font-size: 50px;
+}
+
+.title {
+  text-decoration: none;
+  font-size: 60px;
+  color: gold;
+}
+
+.error {
+  box-shadow: 0 0 10px red;
+}

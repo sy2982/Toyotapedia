@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="{{ url_for('static', filename = 'add.js') }}"></script>
+
+<script>
+  let current_id = {{ current_id|tojson }};
+</script>
+
+<div id="success-message" class="alert alert-success text-center" style="display: none;">
+    New item successfully created.
+    <a href="/view/{{ current_id }}" id="view-item-link" class="btn btn-primary">See it here</a>
+</div>
+
+<form class="container mt-3 mb-3">
+
+    <h2>Add New Car</h2>
+
+    <div class="row g-3">
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="image" class="form-label">Image URL:</label>
+                <input id="image" type="text" class="form-control" name="image" placeholder="Enter image URL">
+            </div>
+
+            <div class="mb-3">
+                <label for="model" class="form-label">Model:</label>
+                <input id="model" type="text" class="form-control" name="model" placeholder="Enter model">
+            </div>
+
+            <div class="mb-3">
+                <label for="year" class="form-label">Year:</label>
+                <input id="year" type="number" class="form-control" name="year" placeholder="Enter year">
+            </div>
+
+            <div class="mb-3">
+                <label for="fuel_type" class="form-label">Fuel Type:</label>
+                <input id="fuel_type" type="text" class="form-control" name="fuel_type" placeholder="Enter fuel type">
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <input id="price" type="number" class="form-control" name="price" placeholder="Enter price">
+            </div>
+
+            <div class="mb-3">
+                <label for="transmission" class="form-label">Transmission:</label>
+                <input id="transmission" type="text" class="form-control" name="transmission" placeholder="Enter transmission">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="engine" class="form-label">Engine:</label>
+                <input id="engine" type="text" class="form-control" name="engine" placeholder="Enter engine">
+            </div>
+
+            <div class="mb-3">
+                <label for="mpg_city" class="form-label">MPG City:</label>
+                <input id="mpg_city" type="number" class="form-control" name="mpg_city" placeholder="Enter MPG city">
+            </div>
+
+            <div class="mb-3">
+                <label for="mpg_highway" class="form-label">MPG Highway:</label>
+                <input id="mpg_highway" type="number" class="form-control" name="mpg_highway" placeholder="Enter MPG highway">
+            </div>
+
+            <div class="mb-3">
+                <label for="features" class="form-label">Features (comma-separated):</label>
+                <input id="features" type="text" class="form-control" name="features" placeholder="Enter features (comma-separated)">
+            </div>
+
+            <div class="mb-3">
+                <label for="similar_cars" class="form-label">Similar Cars (comma-separated):</label>
+                <input id="similar_cars" type="text" class="form-control" name="similar_cars" placeholder="Enter Similar Cars by ID (comma-separated)">
+            </div>
+
+            <div class="mb-3">
+                <label for="car_type" class="form-label">Car Type:</label>
+                <input id="car_type" type="text" class="form-control" name="car_type" placeholder="Enter car type">
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" class="form-control" name="description" placeholder="Enter description"></textarea>
+            </div>
+        </div>
+
+        <div class="col-12 text-center">
+            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

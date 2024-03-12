@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-3 mb-3">
+    <h2>Edit Car</h2>
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+    <form method="post" action="{{ url_for('edit_car', id=car['id']) }}" class="row g-3">
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="image_url" class="form-label">Image URL:</label>
+                <input type="text" class="form-control" name="image_url" value="{{ car['image'] }}" required pattern=".*\S.*">
+            </div>
+
+            <div class="mb-3">
+                <label for="model" class="form-label">Model:</label>
+                <input type="text" class="form-control" name="model" value="{{ car['model'] }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="year" class="form-label">Year:</label>
+                <input type="number" class="form-control" name="year" value="{{ car['year'] }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="fuel_type" class="form-label">Fuel Type:</label>
+                <input type="text" class="form-control" name="fuel_type" value="{{ car['fuel_type'] }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <input type="number" class="form-control" name="price" value="{{ car['price'] }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="transmission" class="form-label">Transmission:</label>
+                <input type="text" class="form-control" name="transmission" value="{{ car['transmission'] }}" required>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="engine" class="form-label">Engine:</label>
+                <input type="text" class="form-control" name="engine" value="{{ car['engine'] }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="mpg_city" class="form-label">Mileage (City):</label>
+                <input type="number" class="form-control" name="mpg_city" value="{{ car['mpg_city'] }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="mpg_highway" class="form-label">Mileage (Highway):</label>
+                <input type="number" class="form-control" name="mpg_highway" value="{{ car['mpg_highway'] }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="features" class="form-label">Features:</label>
+                <input type="text" class="form-control" name="features" value="{{ ', '.join(car['features']) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="similar_cars" class="form-label">Similar Cars:</label>
+                <input type="text" class="form-control" name="similar_cars" value="{{ ', '.join(car['similar_cars']) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="car_type" class="form-label">Car Type:</label>
+                <input type="text" class="form-control" name="car_type" value="{{ car['car_type'] }}" required>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea class="form-control" name="description" required>{{ car['description'] }}</textarea>
+            </div>
+        </div>
+
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="discardBtn" class="btn btn-secondary" data-car-id="{{ car.id }}">Discard Changes</button>
+        </div>
+        
+        <script src="{{ url_for('static', filename='edit_car.js') }}"></script>
+    </form>
+</div>
+{% endblock %}

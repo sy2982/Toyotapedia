@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="carName">{{ car.make }} {{ car.model }}</h1>
+        <a href="{{ url_for('edit_car', id=car.id) }}" class="btn btn-warning">Edit</a>
+    </div>
+
+    <div>
+        <img src="{{ car.image }}" class="card-img-top car-detail-image" alt="{{ car.make }} {{ car.model }}">
+        <div class="card-body">
+            <p class="card-text">{{ car.description }}</p>
+            <ul>
+                <li><span class="bold">Year:</span> {{ car.year }}</li>
+                <li><span class="bold">Fuel Type:</span> {{ car.fuel_type }}</li>
+                <li><span class="bold">Price:</span> $<span id="formattedPrice">{{ car.price }}</span></li>
+                <li><span class="bold">Transmission:</span> {{ car.transmission }}</li>
+                <li><span class="bold">Engine:</span> {{ car.engine }}</li>
+                <li><span class="bold">Mileage (City/Highway):</span> {{ car.mpg_city }} MPG / {{ car.mpg_highway }} MPG</li>
+                <li><span class="bold">Car Type:</span> {{ car.car_type }}</li>
+                <li><span class="bold">Features:</span>
+                    <ul>
+                        {% for feature in car.features %}
+                            <li>{{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><span class="bold">Similar Cars:</span>
+                    <div class="row mt-2">
+                        {% for similar_car_id in car.similar_cars %}
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <h5 class="card-title m-2 text-center">{{ car_data[similar_car_id].make }} {{ car_data[similar_car_id].model }}</h5>
+                                    <img src="{{ car_data[similar_car_id].image }}" class="card-img-top car-image" alt="{{ car_data[similar_car_id].make }} {{ car_data[similar_car_id].model }}">
+                                    <div class="card-footer text-center">
+                                        <a href="/view/{{ car_data[similar_car_id].id }}" class="btn btn-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='car_details.js') }}"></script>
+{% endblock %}
